@@ -136,14 +136,14 @@ namespace CrmDeploy
             return PluginTypeOptions.PluginAssemblyOptions.HasPlugin<T>();
         }
 
-        public PluginStepOptionsBuilder AndExecutesOn(SdkMessageNames messageName, string primaryEntityName, string secondaryEntityName = "")
+        public PluginStepOptionsBuilder AndExecutesOn(SdkMessageNames messageName, string primaryEntityName, string secondaryEntityName = "", string config = "")
         {
-            return AndExecutesOn(messageName.ToString(), primaryEntityName, secondaryEntityName);
+            return AndExecutesOn(messageName.ToString(), primaryEntityName, secondaryEntityName, config);
         }
 
-        public PluginStepOptionsBuilder AndExecutesOn(string messageName, string primaryEntityName, string secondaryEntityName = "")
+        public PluginStepOptionsBuilder AndExecutesOn(string messageName, string primaryEntityName, string secondaryEntityName = "", string config = "")
         {
-            return PluginTypeOptions.WhichExecutesOn(messageName, primaryEntityName, secondaryEntityName);
+            return PluginTypeOptions.WhichExecutesOn(messageName, primaryEntityName, secondaryEntityName, config);
         }
     }
 }

@@ -84,7 +84,7 @@ namespace CrmDeploy
                             // check message name is valid.
                             var messageId = pluginHelper.GetMessageId(ps.SdkMessageName);
                             ps.SdkMessageProcessingStep.SdkMessageId = new EntityReference("sdkmessage", messageId);
-
+                            ps.SdkMessageProcessingStep.Configuration = ps.Config;
                             var sdkFilterMessageId = pluginHelper.GetSdkMessageFilterId(ps.PrimaryEntityName,
                                                                                         ps.SecondaryEntityName,
                                                                                         messageId);

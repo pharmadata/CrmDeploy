@@ -7,7 +7,7 @@ namespace CrmDeploy
     public class PluginStepRegistration
     {
 
-        public PluginStepRegistration(PluginTypeRegistration pluginTypeRegistration, string sdkMessageName, string primaryEntityName, string secondaryEntityName = "")
+        public PluginStepRegistration(PluginTypeRegistration pluginTypeRegistration, string sdkMessageName, string primaryEntityName, string secondaryEntityName = "", string config = "")
         {
             PluginTypeRegistration = pluginTypeRegistration;
             SdkMessageProcessingStep = new SdkMessageProcessingStep();
@@ -17,10 +17,11 @@ namespace CrmDeploy
             SdkMessageProcessingStep.plugintypeid_sdkmessageprocessingstep = pluginTypeRegistration.PluginType;
             PrimaryEntityName = primaryEntityName;
             SecondaryEntityName = secondaryEntityName;
+            Config = config;
         }
 
-        public PluginStepRegistration(PluginTypeRegistration pluginTypeRegistration, SdkMessageNames sdkMessageName, string primaryEntityName, string secondaryEntityName = "")
-            : this(pluginTypeRegistration, sdkMessageName.ToString(), primaryEntityName, secondaryEntityName)
+        public PluginStepRegistration(PluginTypeRegistration pluginTypeRegistration, SdkMessageNames sdkMessageName, string primaryEntityName, string secondaryEntityName = "", string config = "")
+            : this(pluginTypeRegistration, sdkMessageName.ToString(), primaryEntityName, secondaryEntityName, config)
         {
         }
 
@@ -51,7 +52,6 @@ namespace CrmDeploy
         public string PrimaryEntityName { get; set; }
 
         public string SecondaryEntityName { get; set; }
-
-
+        public string Config { get; set; }
     }
 }
