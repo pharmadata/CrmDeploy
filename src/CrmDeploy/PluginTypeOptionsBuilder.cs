@@ -23,7 +23,7 @@ namespace CrmDeploy
 
         public PluginStepOptionsBuilder WhichExecutesOn(SdkMessageNames sdkMessageName, string primaryEntityLogicalName, string secondaryEntityLogicalName = "", string config = "")
         {
-            var pluginStepRegistration = new PluginStepRegistration(this.PluginTypeRegistration, sdkMessageName, primaryEntityLogicalName, secondaryEntityLogicalName);
+            var pluginStepRegistration = new PluginStepRegistration(this.PluginTypeRegistration, sdkMessageName, primaryEntityLogicalName, secondaryEntityLogicalName, config);
             PluginTypeRegistration.PluginStepRegistrations.Add(pluginStepRegistration);
             return new PluginStepOptionsBuilder(this, pluginStepRegistration);
         }
