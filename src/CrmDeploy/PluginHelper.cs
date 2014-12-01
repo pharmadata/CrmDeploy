@@ -41,6 +41,52 @@ namespace CrmDeploy
                 }
             }
         }
+        
+        public void CleanOutPlugin(PluginAssemblyRegistration par)
+        {
+            using (var orgService = (OrganizationServiceContext) _ServiceProvider.GetOrganisationService())
+            {
+                foreach (var ptr in par.PluginTypeRegistrations)
+                {
+                    var e = DoesPluginTypeExist(ptr.PluginType.TypeName);
+                    if(e.Exists == false)
+                        continue;
+
+                    DeleteStepsForPlugin(e.EntityReference.Id);
+
+                    var q = new QueryByAttribute(PluginType.EntityLogicalName);
+                    q.ColumnSet = new ColumnSet(true);
+                    q.Attributes.AddRange("typename");
+                    q.Values.AddRange(ptr.PluginType.TypeName);
+                    var res = orgService.RetrieveMultiple(q);
+                    if (res.Entities != null)
+                    {
+                        foreach (var entity in res.Entities)
+                        {
+                            orgService.Attach(entity);
+                            orgService.DeleteObject(entity);
+                        }
+                    }
+                }
+
+                var query = new QueryByAttribute(PluginAssembly.EntityLogicalName);
+                query.ColumnSet = new ColumnSet(true);
+                query.Attributes.AddRange("name");
+                query.Values.AddRange(par.PluginAssembly.Name);
+                var results = orgService.RetrieveMultiple(query);
+                if (results.Entities != null && results.Entities.Count > 0)
+                {
+                    foreach (var entity in results.Entities)
+                    {
+                        orgService.Attach(entity);
+                        orgService.DeleteObject(entity);
+                    }
+                }
+
+                orgService.SaveChanges();
+            }
+
+        }
 
         public EntityExists DoesPluginAssemblyExist(string pluginName)
         {

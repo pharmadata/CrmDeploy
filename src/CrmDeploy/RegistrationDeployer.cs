@@ -46,36 +46,18 @@ namespace CrmDeploy
                 foreach (var par in _Registration.PluginAssemblyRegistrations)
                 {
                     var pa = par.PluginAssembly;
-                    var pluginExists = pluginHelper.DoesPluginAssemblyExist(pa.Name);
-                    if (!pluginExists.Exists)
-                    {
-                        // Create new plugin assembly registration.
-                        var newRecordId = pluginHelper.RegisterAssembly(pa);
-                        pa.PluginAssemblyId = newRecordId;
-                        result.RecordChange(pa.LogicalName, newRecordId);
-                    }
-                    else
-                    {
-                        pa.PluginAssemblyId = pluginExists.EntityReference.Id;
-                        result.RecordChange(pa.LogicalName, pluginExists.EntityReference.Id);
-                    }
+                    pluginHelper.CleanOutPlugin(par);
+
+                    var newRecordId = pluginHelper.RegisterAssembly(pa);
+                    pa.PluginAssemblyId = newRecordId;
+                    result.RecordChange(pa.LogicalName, newRecordId);
 
                     foreach (var ptr in par.PluginTypeRegistrations)
                     {
-                        var pluginTypeExists = pluginHelper.DoesPluginTypeExist(ptr.PluginType.TypeName);
-
-                        if (!pluginTypeExists.Exists)
-                        {
-                            // Create new plugin type registration.
-                            var newRecordId = pluginHelper.RegisterType(ptr.PluginType);
-                            ptr.PluginType.PluginTypeId = newRecordId;
-                            result.RecordChange(ptr.PluginType.LogicalName, newRecordId);
-                        }
-                        else
-                        {
-                            ptr.PluginType.PluginTypeId = pluginTypeExists.EntityReference.Id;
-                            result.RecordChange(ptr.PluginType.LogicalName, pluginTypeExists.EntityReference.Id);
-                        }
+                        // Create new plugin type registration.
+                        newRecordId = pluginHelper.RegisterType(ptr.PluginType);
+                        ptr.PluginType.PluginTypeId = newRecordId;
+                        result.RecordChange(ptr.PluginType.LogicalName, newRecordId);
 
                         // for each step
                         foreach (var ps in ptr.PluginStepRegistrations)
@@ -90,7 +72,7 @@ namespace CrmDeploy
                                                                                         messageId);
                             ps.SdkMessageProcessingStep.SdkMessageFilterId = new EntityReference("sdkmessagefilter", sdkFilterMessageId);
 
-                            var newRecordId = pluginHelper.RegisterStep(ps.SdkMessageProcessingStep);
+                            newRecordId = pluginHelper.RegisterStep(ps.SdkMessageProcessingStep);
                             result.RecordChange(ps.SdkMessageProcessingStep.LogicalName, newRecordId);
 
                         }
@@ -143,8 +125,8 @@ namespace CrmDeploy
                         Debug.Write(e.Message);
                         throw;
                     }
-                 
-                    
+
+
                 }
             }
         }
