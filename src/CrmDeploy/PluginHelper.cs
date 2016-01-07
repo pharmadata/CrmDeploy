@@ -190,6 +190,24 @@ namespace CrmDeploy
             }
         }
 
+        public void DeleteStepsForPlugin(Guid pluginId)
+        {
+
+            using (var orgService = (OrganizationServiceContext)_ServiceProvider.GetOrganisationService())
+            {
+                var sdkMessageFilters = from s in orgService.CreateQuery("sdkmessageprocessingstep")
+                                        where (Guid)s["plugintypeid"] == pluginId
+                                        select s;
+
+                foreach (var result in sdkMessageFilters)
+                {
+                    orgService.DeleteObject(result);
+                }
+                orgService.SaveChanges();
+
+            }
+        }
+
         public Guid GetSdkMessageFilterId(string primaryEntity, string secondaryEntity, Guid messageId)
         {
             using (var orgService = (OrganizationServiceContext)_ServiceProvider.GetOrganisationService())
