@@ -69,20 +69,6 @@ namespace CrmDeploy
                     }
                 }
 
-                var query = new QueryByAttribute(PluginAssembly.EntityLogicalName);
-                query.ColumnSet = new ColumnSet(true);
-                query.Attributes.AddRange("name");
-                query.Values.AddRange(par.PluginAssembly.Name);
-                var results = orgService.RetrieveMultiple(query);
-                if (results.Entities != null && results.Entities.Count > 0)
-                {
-                    foreach (var entity in results.Entities)
-                    {
-                        orgService.Attach(entity);
-                        orgService.DeleteObject(entity);
-                    }
-                }
-
                 orgService.SaveChanges();
             }
 

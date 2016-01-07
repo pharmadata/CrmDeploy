@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>CrmDeploy</id>
+    <id>CrmDeploy-PharmaData</id>
     <version>0.0.0</version>
     <title>CrmDeploy</title>
     <description>Deploy plugins / workflows etc to Dynamics CRM programmatically using a fluent API. This is useful for when a manual process, such as using the Plugin Registration Tool, just wont cut it!</description>
-    <authors>Darrell Tunnell</authors>
-    <owners>Darrell Tunnell</owners>
+    <authors>Darrell Tunnell and PharmaData</authors>
+    <owners>Darrell Tunnell and PharmaData</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <language>en-gb</language>
-    <projectUrl>https://github.com/dazinator/CrmDeploy</projectUrl>
+    <projectUrl>https://github.com/pharmadata/CrmDeploy</projectUrl>
     <copyright>Copyright � Darrell Tunnell 2014</copyright>
     <releaseNotes>
       Initial release.
@@ -17,7 +17,7 @@
     <tags>Dynamics Crm Deploy Deployment Plugin PluginRegistration PluginRegistrationTool Workflow WorkflowRegistration</tags>
     <dependencies>
       <dependency id="Microsoft.CrmSdk.Extensions" version="6.0.4" />
-      <dependency id="Microsoft.CrmSdk.CoreAssemblies" version="6.0.4" />
+      <dependency id="Microsoft.CrmSdk.CoreAssemblies" version="6.1.1" />
     </dependencies>
   </metadata>
   <files>

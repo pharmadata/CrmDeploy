@@ -46,16 +46,25 @@ namespace CrmDeploy
                 foreach (var par in _Registration.PluginAssemblyRegistrations)
                 {
                     var pa = par.PluginAssembly;
-                    pluginHelper.CleanOutPlugin(par);
-
-                    var newRecordId = pluginHelper.RegisterAssembly(pa);
-                    pa.PluginAssemblyId = newRecordId;
-                    result.RecordChange(pa.LogicalName, newRecordId);
+                    var pluginExists = pluginHelper.DoesPluginAssemblyExist(pa.Name);
+                    if (!pluginExists.Exists)
+                    {
+                        // Create new plugin assembly registration.
+                        var newRecordId = pluginHelper.RegisterAssembly(pa);
+                        pa.PluginAssemblyId = newRecordId;
+                        result.RecordChange(pa.LogicalName, newRecordId);
+                    }
+                    else
+                    {
+                        pa.PluginAssemblyId = pluginExists.EntityReference.Id;
+                        result.RecordChange(pa.LogicalName, pluginExists.EntityReference.Id);
+                        pluginHelper.CleanOutPlugin(par);
+                    }
 
                     foreach (var ptr in par.PluginTypeRegistrations)
                     {
                         // Create new plugin type registration.
-                        newRecordId = pluginHelper.RegisterType(ptr.PluginType);
+                        var newRecordId = pluginHelper.RegisterType(ptr.PluginType);
                         ptr.PluginType.PluginTypeId = newRecordId;
                         result.RecordChange(ptr.PluginType.LogicalName, newRecordId);
 

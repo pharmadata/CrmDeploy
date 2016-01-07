@@ -24,12 +24,12 @@ namespace CrmDeploy
             ComponentRegistration = new ComponentRegistration();
         }
 
-        internal IRegistrationDeployer DeployTo(string orgConnectionString)
+        public IRegistrationDeployer DeployTo(string orgConnectionString)
         {
             return new RegistrationDeployer(ComponentRegistration, orgConnectionString);
         }
 
-        internal IRegistrationDeployer DeployTo(ICrmServiceProvider crmServiceProvider)
+        public IRegistrationDeployer DeployTo(ICrmServiceProvider crmServiceProvider)
         {
             return new RegistrationDeployer(ComponentRegistration, crmServiceProvider);
         }
