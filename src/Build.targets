@@ -5,7 +5,7 @@
 
   <PropertyGroup>
     <!--The nuget feed url to push nuget package to -->
-    <PushTo Condition="$(PushTo) == ''">https://www.nuget.org/</PushTo>
+    <PushTo Condition="$(PushTo) == ''">https://www.nuget.org</PushTo>
     <!--The nuspec file to be used for packaging -->
     <NuspecFileName Condition="$(NuspecFileName) == ''">$(SolutionName).nuspec</NuspecFileName>
     <!--The version number of the assembly info-->
@@ -88,7 +88,7 @@
 
     <PropertyGroup>
       <BuildCommand>$(NuGetExe) pack $(SolutionDir)$(NuspecFileName) -Properties "Configuration=$(Configuration);Platform=$(Platform);" $(NonInteractiveSwitch) -OutputDirectory "$(PackageOutputDir)" -Version "$(PackageVersionNumber)" -symbols -Verbose</BuildCommand>
-      <OutputPackage>$(PackageOutputDir)\$(TargetName).$(PackageVersionNumber).nupkg</OutputPackage>
+      <OutputPackage>$(PackageOutputDir)\$(TargetName)-PharmaData.$(PackageVersionNumber).nupkg</OutputPackage>
     </PropertyGroup>
 
     <Message Importance="high" Text="Build command is $(BuildCommand)"/>
