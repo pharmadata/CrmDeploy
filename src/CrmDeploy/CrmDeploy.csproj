@@ -148,6 +148,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Services" />
@@ -181,6 +182,7 @@
   <ItemGroup>
     <Compile Include="ComponentRegistration.cs" />
     <Compile Include="IRegistrationUpdater.cs" />
+    <Compile Include="PluginActivityOptionsBuilder.cs" />
     <Compile Include="PluginAssemblyOptionsBuilder.cs" />
     <Compile Include="PluginAssemblyRegistration.cs" />
     <Compile Include="DeploymentBuilder.cs" />

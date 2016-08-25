@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities;
 using System.IO;
 using System.Linq;
 using CrmDeploy.Enums;
@@ -138,6 +139,13 @@ namespace CrmDeploy
             PluginAssemblyRegistration.PluginTypeRegistrations.Add(typeReg);
             var builder = new PluginTypeOptionsBuilder(this, typeReg);
             return builder;
+        }
+
+        public PluginActivityOptionsBuilder HasActivity<T>(string name, string group) where T : CodeActivity
+        {
+            var typeReg = new PluginTypeRegistration(PluginAssemblyRegistration, typeof(T), name, group);
+            PluginAssemblyRegistration.PluginTypeRegistrations.Add(typeReg);
+            return new PluginActivityOptionsBuilder(this, typeReg);
         }
     }
 }

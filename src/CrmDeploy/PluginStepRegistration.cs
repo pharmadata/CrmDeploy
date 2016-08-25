@@ -15,6 +15,9 @@ namespace CrmDeploy
             PluginTypeRegistration.PluginType.PropertyChanged += PluginType_PropertyChanged;
             SdkMessageProcessingStep.plugintype_sdkmessageprocessingstep = pluginTypeRegistration.PluginType;
             SdkMessageProcessingStep.plugintypeid_sdkmessageprocessingstep = pluginTypeRegistration.PluginType;
+            SdkMessageProcessingStep.Name = primaryEntityName == "none"
+                ? $"{sdkMessageName}"
+                : $"{sdkMessageName} on {primaryEntityName}";
             PrimaryEntityName = primaryEntityName;
             SecondaryEntityName = secondaryEntityName;
             Config = config;

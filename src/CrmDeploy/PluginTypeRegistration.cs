@@ -10,11 +10,15 @@ namespace CrmDeploy
 
         public PluginAssemblyRegistration PluginAssemblyRegistration { get; set; }
 
-
         public PluginTypeRegistration(PluginAssemblyRegistration pluginAssemblyRegistration, Type type)
+            : this(pluginAssemblyRegistration, type, type.Name, null)
+        {   
+        }
+
+        public PluginTypeRegistration(PluginAssemblyRegistration pluginAssemblyRegistration, Type type, string name, string workflowActivityGroupName)
         {
             PluginAssemblyRegistration = pluginAssemblyRegistration;
-            PluginType = new PluginType { TypeName = type.FullName, FriendlyName = type.FullName };
+            PluginType = new PluginType { TypeName = type.FullName, FriendlyName = type.FullName, Name = name, WorkflowActivityGroupName = workflowActivityGroupName };
             Type = type;
             PluginStepRegistrations = new List<PluginStepRegistration>();
             pluginAssemblyRegistration.PluginAssembly.PropertyChanged += PluginAssembly_PropertyChanged;

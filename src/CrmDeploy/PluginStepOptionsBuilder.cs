@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities;
 using CrmDeploy.Connection;
 using CrmDeploy.Enums;
 using Microsoft.Xrm.Sdk;
@@ -134,6 +135,11 @@ namespace CrmDeploy
         public PluginTypeOptionsBuilder AndHasPlugin<T>() where T : IPlugin
         {
             return PluginTypeOptions.PluginAssemblyOptions.HasPlugin<T>();
+        }
+
+        public PluginActivityOptionsBuilder AndHasActivity<T>(string name, string group) where T : CodeActivity
+        {
+            return PluginTypeOptions.PluginAssemblyOptions.HasActivity<T>(name, group);
         }
 
         public PluginStepOptionsBuilder AndExecutesOn(SdkMessageNames messageName, string primaryEntityName, string secondaryEntityName = "", string config = "")
