@@ -5,7 +5,7 @@ A .Net Library that makes it simple to deploy plugins (and maybe one day workflo
 
 # Deploying Plugins
 
-CrmDeploy is available as a NuGet package: https://www.nuget.org/packages/CrmDeploy/ so it's recommended that you use NuGet to add it to your solution.
+CrmDeploy is available as a NuGet package: https://www.nuget.org/packages/CrmDeploy-PharmaData/ so it's recommended that you use NuGet to add it to your solution.
 
 The following demonstrates how to deploy a plugin to Dynamics Crm using the fluent API.
 
