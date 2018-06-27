@@ -103,13 +103,9 @@ namespace CrmDeploy
         /// <param name="regisrationInfo"></param>
         public void Undeploy(RegistrationInfo regisrationInfo)
         {
-            // Ensure custom test entity removed.
-            var service = new CrmServiceProvider(new ExplicitConnectionStringProviderWithFallbackToConfig(), new CrmClientCredentialsProvider());
-
             // clean up in reverse creation order.
-
             regisrationInfo.RelatedEntities.Reverse();
-            DeleteEntities(service, regisrationInfo.RelatedEntities);
+            DeleteEntities(_ServiceProvider, regisrationInfo.RelatedEntities);
         }
 
         /// <summary>
@@ -134,11 +130,8 @@ namespace CrmDeploy
                         Debug.Write(e.Message);
                         throw;
                     }
-
-
                 }
             }
         }
-
     }
 }
