@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>CrmDeploy-PharmaData</id>
-    <version>0.0.0</version>
+    <version>$version$</version>
     <title>CrmDeploy-PharmaData</title>
     <description>Deploy plugins / workflows etc to Dynamics CRM programmatically using a fluent API. This is useful for when a manual process, such as using the Plugin Registration Tool, just wont cut it!</description>
     <authors>Darrell Tunnell and PharmaData</authors>
