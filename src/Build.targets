@@ -23,7 +23,7 @@
   </PropertyGroup>
 
   <!--After Build - Release|AnyCPU.-->
-  <Target Name="AfterBuild" DependsOnTargets="GetPackageVersionNumber; BuildNet40; BuildNet45; CreatePackages; PushPackages" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <Target Name="AfterBuild" DependsOnTargets="GetPackageVersionNumber; BuildNet40; BuildNet45;" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
   </Target>
 
   <!--Builds the project targeting .NET 4.0.-->

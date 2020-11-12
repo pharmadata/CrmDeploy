@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>CrmDeploy-PharmaData</id>
+    <version>$version$</version>
+    <title>CrmDeploy-PharmaData</title>
+    <description>Deploy plugins / workflows etc to Dynamics CRM programmatically using a fluent API. This is useful for when a manual process, such as using the Plugin Registration Tool, just wont cut it!</description>
+    <authors>Darrell Tunnell and PharmaData</authors>
+    <owners>Darrell Tunnell and PharmaData</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <language>en-gb</language>
+    <projectUrl>https://github.com/pharmadata/CrmDeploy</projectUrl>
+    <copyright>Copyright � Darrell Tunnell 2014</copyright>
+    <releaseNotes>
+      Initial release.
+    </releaseNotes>
+    <tags>Dynamics Crm Deploy Deployment Plugin PluginRegistration PluginRegistrationTool Workflow WorkflowRegistration</tags>
+    <dependencies>
+      <dependency id="Microsoft.CrmSdk.Extensions" version="6.0.4" />
+      <dependency id="Microsoft.CrmSdk.CoreAssemblies" version="6.1.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\net40\CrmDeploy.dll" target="lib\net40\CrmDeploy.dll" />
+    <file src="bin\Release\net40\CrmDeploy.pdb" target="lib\net40\CrmDeploy.pdb" />
+    <file src="bin\Release\net45\CrmDeploy.dll" target="lib\net45\CrmDeploy.dll" />
+    <file src="bin\Release\net45\CrmDeploy.pdb" target="lib\net45\CrmDeploy.pdb" />
+  </files>
+</package>

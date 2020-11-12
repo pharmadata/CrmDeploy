@@ -1,10 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{31343D89-C6F5-4397-91EC-2DF4CCAA849B}"
-	ProjectSection(SolutionItems) = preProject
-		nuget.config = nuget.config
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{3F08C5C4-EBE3-49FE-8C3D-B5DCD230FACC}"
 EndProject
@@ -13,7 +12,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{6F14A947-1316-4CF7-ADD6-8F20A2BB453E}"
 	ProjectSection(SolutionItems) = preProject
 		Build.targets = Build.targets
-		CrmDeploy.nuspec = CrmDeploy.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrmDeploy", "CrmDeploy\CrmDeploy.csproj", "{C3F7B7A3-4E85-48FF-AA99-4D9A9CA0E729}"
@@ -45,5 +43,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {967527A1-7D81-475E-90AD-9A1F56386B96}
 	EndGlobalSection
 EndGlobal
